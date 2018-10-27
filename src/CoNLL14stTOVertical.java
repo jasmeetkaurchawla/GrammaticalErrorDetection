@@ -8,85 +8,85 @@ public class CoNLL14stTOVertical {
 
     public static String conversion(String tok){
        if(tok.contains("Vt")){
-           return ("Verb Tense");
+           return ("Verb Tense (Vt)");
        }
         else if(tok.contains("Vm")){
-            return ("Verb Model");
+            return ("Verb Model (Vm)");
         }
        else if(tok.contains("Vform")){
-           return ("Verb Form");
+           return ("Verb Form (Vform)");
        }
        else if(tok.contains("V0")){
-           return ("Verb missing");
+           return ("Verb missing (V0)");
        }
        else if(tok.contains("SVA")){
-           return ("Subject-verb agreement");
+           return ("Subject-verb agreement (SVA)");
        }
        else if(tok.contains("ArtOrDet")){
-           return ("Article or determiner");
+           return ("Article or determiner (ArtOrDet)");
        }
        else if(tok.contains("Nn")){
-           return ("Noun number");
+           return ("Noun number (Nn)");
        }
        else if(tok.contains("Npos")){
-           return ("Noun possessive ");
+           return ("Noun possessive (Npos)");
        }
        else if(tok.contains("Pform")){
-           return ("Pronoun form");
+           return ("Pronoun form (Pform)");
        }
        else if(tok.contains("Pref")){
-           return ("Pronoun reference");
+           return ("Pronoun reference (Pref)");
        }
        else if(tok.contains("Pre")){
-           return ("Preposition ");
+           return ("Preposition (Pre)");
        }
        else if(tok.contains("Wci")){
-           return ("Wrong collocation/idiom ");
+           return ("Wrong collocation/idiom (Wci)");
        }
        else if(tok.contains("Wa")){
-           return ("Acronyms ");
+           return ("Acronyms (Wa)");
        }
        else if(tok.contains("Wform")){
-           return ("Word form");
+           return ("Word form (Wfrom)");
        }
        else if(tok.contains("Wtone")){
-           return ("Tone (formal/informal)");
+           return ("Tone (formal/informal) (Wtone)");
        }
        else if(tok.contains("Srun")){
-           return ("Run-on sentences, comma splices");
+           return ("Run-on sentences, comma splices (Srun)");
        }
        else if(tok.contains("Smod")){
-           return ("Dangling modifiers ");
+           return ("Dangling modifiers (Smod)");
        }
        else if(tok.contains("Spar")){
-           return ("Parallelism ");
+           return ("Parallelism (Spar)");
        }
        else if(tok.contains("Sfrag")){
-           return ("Sentence fragment ");
+           return ("Sentence fragment (Sfrag)");
        }
        else if(tok.contains("Ssub")){
-           return ("Subordinate clause");
+           return ("Subordinate clause (Ssub)");
        }
        else if(tok.contains("WOinc")){
-           return ("Incorrect word order");
+           return ("Incorrect word order (WOinc)");
        }
        else if(tok.contains("WOadv")){
-           return ("Incorrect adjective or adverb order");
+           return ("Incorrect adjective or adverb order (WOadv)");
        }
        else if(tok.contains("Trans")){
-           return ("Linking words/phrases ");
+           return ("Linking words/phrases (Trans)");
        }
        else if(tok.contains("Mec")){
-           return ("Spelling, punctuation or capitalization, etc.");
+           return ("Spelling, punctuation or capitalization, etc. (Mec)");
        }
        else if(tok.contains("Rloc")){
-           return ("Redundancy ");
+           return ("Redundancy (Rloc)");
        }
        else if(tok.contains("Cit")){
-           return ("Citation ");
+           return ("Citation (Cit)");
        }
        else if(tok.contains("Um")){
-           return ("Unclear meaning");
+           return ("Unclear meaning (Um)");
        }
        else {
            return ("Other errors");
@@ -96,7 +96,7 @@ public class CoNLL14stTOVertical {
 
     public static void main (String[] args) throws IOException {
 
-        String fileName = "/Users/jasmeetkaurchawla/IdeaProjects/CSE467/src/conll14st-preprocessed-head1000.m2";
+        String fileName = "/Users/jasmeetkaurchawla/IdeaProjects/CSE467/src/conll14st-preprocessedextra.m2";
         //	BufferedReader d = new BufferedReader(new InputStreamReader(new FileInputStream(new File (fileName))));
         //                OutputStreamWriter out = new OutputStreamWriter (new FileOutputStream(fileName+".1"), "UTF-8");
         BufferedReader d;
@@ -184,13 +184,22 @@ public class CoNLL14stTOVertical {
                         if (x == 1){
                                 ar[end][1] = "add ("+ conversion(tok) + ")"+ "\t";
                         }
+
                         else{
                             ar[end][1] = conversion(tok) + "\t";
                         }
+
                     }
                     else if (addr == 3) {
                         correct = tok;
-                        ar[end][1] += tok;
+
+                        if(tok.contains("REQUIRED")){
+                            tok="delete";
+                            ar[end][1] += tok;
+                        }
+                        else{
+                            ar[end][1] += tok;
+                        }
                     }
 
 
