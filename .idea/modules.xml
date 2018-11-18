@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/CSE467.iml" filepath="$PROJECT_DIR$/CSE467.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Grammatical-Error-Detection1.iml" filepath="$PROJECT_DIR$/.idea/Grammatical-Error-Detection1.iml" />
     </modules>
   </component>
 </project>
