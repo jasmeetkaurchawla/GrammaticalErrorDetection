@@ -1,1 +1,1 @@
-![alt tag](http://domain.com/path/to/img.png "Description goes here")
+![alt tag](https://github.com/jkchawla/Grammatical-Error-Detection/blob/master/poster.png "Poster for the project")
